@@ -426,7 +426,7 @@ const t = {
     {/each}
     <button onclick={toggleLang} class="lang-btn">{lang === 'en' ? '中文' : 'EN'}</button>
   </div>
-  <button onclick={()=>menuOpen=!menuOpen} aria-label="Toggle menu" class="md:hidden flex flex-col gap-1.5 p-2">
+  <button onclick={()=>menuOpen=!menuOpen} class="md:hidden flex flex-col gap-1.5 p-2">
     <div class="w-6 h-px bg-white transition-all" style="transform:{menuOpen?'rotate(45deg) translateY(6px)':'none'}"></div>
     <div class="w-6 h-px bg-white" style="opacity:{menuOpen?0:1}"></div>
     <div class="w-6 h-px bg-white transition-all" style="transform:{menuOpen?'rotate(-45deg) translateY(-6px)':'none'}"></div>
