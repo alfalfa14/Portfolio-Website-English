@@ -834,7 +834,7 @@ const t = {
     </div>
 
     <div style="max-width:72rem;margin:0 auto;padding:2rem 2rem 6rem">
-      <div style="display:flex;gap:3rem;align-items:flex-start;margin-bottom:3rem;flex-wrap:wrap">
+      <div class="modal-header-flex" style="display:flex;gap:3rem;align-items:flex-start;margin-bottom:3rem;flex-wrap:wrap">
         <div style="flex:1;min-width:0">
           <h2 class="display-font" style="font-size:clamp(3rem,7vw,5.5rem);color:white;line-height:1;margin-bottom:1.5rem;white-space:pre-line">
             {lang==='en' ? activeProject.titleEn : activeProject.titleZh}
@@ -898,7 +898,7 @@ const t = {
     </div>
 
     <div style="max-width:72rem;margin:0 auto;padding:2rem 2rem 6rem">
-      <div style="display:flex;gap:3rem;align-items:flex-start;margin-bottom:3rem;flex-wrap:wrap">
+      <div class="modal-header-flex" style="display:flex;gap:3rem;align-items:flex-start;margin-bottom:3rem;flex-wrap:wrap">
         <div style="flex:1;min-width:0">
           <h2 class="display-font" style="font-size:clamp(2.5rem,6vw,4.5rem);color:white;line-height:1;margin-bottom:1rem">
             {lang==='en' ? activeAcademic.titleEn : activeAcademic.titleZh}
@@ -1102,6 +1102,15 @@ const t = {
     transition:opacity 0.2s;
   }
   .lang-btn-modal:hover { opacity:0.6; }
+
+  @media (max-width: 700px) {
+    .modal-header-flex {
+      flex-direction: column;
+    }
+    .modal-header-flex > div {
+      width: 100%;
+    }
+  }
 
   .cursor { position:fixed; width:36px; height:36px; border:1px solid rgba(255,255,255,0.4); border-radius:50%; pointer-events:none; z-index:9999; top:0; left:0; transform:translate(-50%,-50%); display:none; transition:width 0.3s,height 0.3s; }
   .cursor-dot { position:fixed; width:4px; height:4px; background:white; border-radius:50%; pointer-events:none; z-index:9999; top:0; left:0; transform:translate(-50%,-50%); display:none; }
