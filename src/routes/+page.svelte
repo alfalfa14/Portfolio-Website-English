@@ -429,7 +429,7 @@ const experiences = [
     return lang === 'zh' ? project.imagesZh : project.imagesEn;
   }
 
-  const email = 'zhou.alfalfa14' + '@' + 'gmail.com';
+  const email = 'shz059' + '@' + 'uchicago.edu';
 
   // Split "**bold**" markers into segments for highlighted key data
   function rich(text) {
@@ -833,7 +833,7 @@ const experiences = [
 
     <div style="max-width:72rem;margin:0 auto;padding:2rem 2rem 6rem">
       <div style="display:flex;gap:3rem;align-items:flex-start;margin-bottom:3rem;flex-wrap:wrap">
-        <div style="flex:1;min-width:0">
+        <div style="flex:1 1 22rem;min-width:0">
           <h2 class="display-font" style="font-size:clamp(3rem,7vw,5.5rem);color:white;line-height:1;margin-bottom:1.5rem;white-space:pre-line">
             {lang==='en' ? activeProject.titleEn : activeProject.titleZh}
           </h2>
@@ -902,7 +902,7 @@ const experiences = [
 
     <div style="max-width:72rem;margin:0 auto;padding:2rem 2rem 6rem">
       <div style="display:flex;gap:3rem;align-items:flex-start;margin-bottom:3rem;flex-wrap:wrap">
-        <div style="flex:1;min-width:0">
+        <div style="flex:1 1 22rem;min-width:0">
           <h2 class="display-font" style="font-size:clamp(2.5rem,6vw,4.5rem);color:white;line-height:1;margin-bottom:1rem">
             {lang==='en' ? activeAcademic.titleEn : activeAcademic.titleZh}
           </h2>
