@@ -6,22 +6,21 @@
   let lang = $state('en');
   let menuOpen = $state(false);
   let activeProject = $state(null);
-  let hoveredProject = $state(null);
   let activeAcademic = $state(null);
   let activePoster = $state(null);
 
 const t = {
     en: {
-      nav: ['About', 'Projects', 'Experience', 'Resume', 'Contact'],
-      navIds: ['about','projects','experience','resume','contact'],
+      nav: ['Projects', 'About', 'Experience', 'Resume', 'Contact'],
+      navIds: ['projects','about','experience','resume','contact'],
       heroGreeting: "Hello, I'm",
       heroName: 'Shangyi Zhou',
       heroSub: 'UX Designer/Product Manager · Bridging Design, Technology & Cross-Functional Teams',
-      heroDesc: "M.A. Digital Studies specializing in HCI & Product Design @ UChicago (Dean's Scholarship) · B.A. Interdisciplinary Computing and the Arts Major @ UCSD",
+      heroDesc: "M.A. Digital Studies (HCI & Product Design) @ UChicago · Previously at L'Oréal R&I Shanghai",
       heroCta: 'View My Work',
       aboutTitle: 'About Me',
-      aboutText: "I'm an interdisciplinary product designer/manager working at the intersection of UX design and product/project management — translating user research and design principles into technical product decisions. Technically fluent across design tools, AI tooling, and front-end development, with strong communication skills across cross-functional teams.",
-      aboutText2: "Currently pursuing my M.A. in Digital Studies at the University of Chicago (Dean's Scholarship), specializing in human-computer interaction and UX/product design & management. My background spans interdisciplinary computing, product design, and art history — grounding a user-centered approach in both technical craft and creative problem-solving.",
+      aboutText: "I'm a product designer who builds what I design. At L'Oréal R&I Shanghai, I took an internal methodology platform from zero to launch — working with the Hair, Skin, and Make-Up teams, restructuring 100+ methodologies into a four-level taxonomy, and shipping the front end in React. I bring the same loop to my own projects, like CoDraft, an AI writing tool where the writer, not the model, makes every decision.",
+      aboutText2: "I'm pursuing an M.A. in Digital Studies (HCI & Product Design) at the University of Chicago on a Dean's Scholarship, after studying Interdisciplinary Computing and the Arts at UC San Diego. My work sits where visual craft meets structure: information architecture that makes dense content easy to navigate, component libraries that keep a product consistent as it grows, and interaction details — motion, feedback, hover states — that I prototype and build myself.",
       skillsTitle: 'Skills',
       projectsTitle: 'Projects',
       expTitle: 'Experience',
@@ -37,18 +36,19 @@ const t = {
       resumeBtnZh: 'Download CV (中文)',
       resumeBtnEn: 'Download Resume (EN)',
       academicTitle: 'Academic & Course Projects',
+      viewProject: 'View Project',
     },
     zh: {
-      nav: ['关于我', '项目', '经历', '简历', '联系'],
-      navIds: ['about','projects','experience','resume','contact'],
+      nav: ['项目', '关于我', '经历', '简历', '联系'],
+      navIds: ['projects','about','experience','resume','contact'],
       heroGreeting: '你好，我是',
       heroName: '周尚嶷',
       heroSub: '从UX设计走向产品管理 · 连接设计、技术与跨职能团队',
-      heroDesc: '芝加哥大学人机交互/产品设计方向数字研究硕士 · 院长奖学金',
+      heroDesc: "芝加哥大学 数字研究（Digital Studies）硕士｜人机交互与产品设计方向 · 曾实习于欧莱雅中国研发和创新中心",
       heroCta: '查看作品',
       aboutTitle: '关于我',
-      aboutText: '我是一名跨学科产品设计师/经理，工作重心在于用户体验设计与产品/项目管理的交叉地带——将用户研究与设计原则转化为具体的技术产品决策。我在设计工具、AI工具与前端开发方面技术娴熟，并具备跨职能团队间的高效沟通能力。',
-      aboutText2: '目前就读于芝加哥大学数字研究（Digital Studies）硕士项目（院长奖学金获得者），专注于人机交互与用户体验/产品设计管理方向。我的背景横跨跨学科计算机、产品设计与艺术史，将以人为本的设计理念建立在扎实的技术功底与创造性问题解决能力之上。',
+      aboutText: "我是一名会把自己的设计亲手做出来的产品设计师。在欧莱雅中国研发和创新中心，我把一个内部方法论平台从0做到上线——与护发、护肤、彩妆团队协作，将100+项方法论重构为四级分类体系，并用React完成前端交付。在自己的项目中我也沿用同样的闭环，比如CoDraft——一款AI写作工具，每一个决定都由写作者而不是模型来做。",
+      aboutText2: "目前我在芝加哥大学攻读数字研究（Digital Studies）硕士，人机交互与产品设计方向，获院长奖学金；本科毕业于加州大学圣地亚哥分校跨学科计算与艺术专业。我的工作位于视觉表达与结构设计的交汇处：让密集内容易于浏览的信息架构、让产品在扩展中保持一致的组件库，以及我亲手做原型并实现的交互细节——动效、反馈与悬停状态。",
       skillsTitle: '技能',
       projectsTitle: '项目展示',
       expTitle: '实习经历',
@@ -64,10 +64,28 @@ const t = {
       resumeBtnZh: '下载简历（中文版）',
       resumeBtnEn: 'Download Resume (EN)',
       academicTitle: '课程与学校项目',
+      viewProject: '查看项目',
     }
   };
 
   const projects = [
+    {
+      id: 'loreal',
+      titleEn: "L'Oréal Digital Methodology Encyclopedia",
+      titleZh: '欧莱雅产品试验方法百科全书',
+      tagEn: 'Product Design · Front-End Development · Project Management',
+      tagZh: '产品设计 · 前端开发 · 项目管理',
+      descEn: "A 0-to-1 internal platform housing 100+ product claims and testing methodologies for L'Oréal's R&I team, unifying information architecture, UI design, and front-end delivery into a single navigation system with a reusable component library. Independently led the full product lifecycle — from stakeholder alignment and UX requirements to prototype iteration and technical implementation with React and Figma, augmented by AI tooling.",
+      descZh: '为欧莱雅研发创新部门从0到1搭建的内部平台，收录100+项产品声明与测试方法论，将信息架构、UI设计与前端交付整合进统一的导航系统与可复用组件库。独立主导产品全生命周期——从跨部门需求对齐、UX需求梳理，到原型迭代与基于React、Figma及AI工具的技术落地实现。',
+      cover: '/images/Loreal/Loreal 5.jpg',
+      coverVideo: '/images/Loreal/CoverLoreal.mp4',
+      videos: ['/images/Loreal/video1.mp4', '/images/Loreal/video2.mp4', '/images/Loreal/video3.mp4', '/images/Loreal/video4.mp4'],
+      imagesEn: ['/images/Loreal/Loreal 1.jpg','/images/Loreal/Loreal 2.jpg','/images/Loreal/Loreal 3.jpg','/images/Loreal/Loreal 4.jpg','/images/Loreal/Loreal 5.jpg','/images/Loreal/Loreal 6.jpg'],
+      imagesZh: ['/images/Loreal/Loreal1CH.jpg','/images/Loreal/Loreal2CH.jpg','/images/Loreal/Loreal3CH.jpg','/images/Loreal/Loreal4CH.jpg','/images/Loreal/Loreal5CH.jpg','/images/Loreal/Loreal6CH.jpg'],
+      color: '#9b7ed4',
+      bg: '#0b0810',
+      tools: ['React', 'Figma', 'AI Tooling', 'Information Architecture', 'Product Design', 'Project Management'],
+    },
     {
       id: 'footnow',
       titleEn: 'FOOTNOW',
@@ -76,28 +94,12 @@ const t = {
       tagZh: 'APP设计 · 用户体验 · 产品设计',
       descEn: 'A smart soccer cleat app helping hobbyist players get game feedback, strengthen team bonds, and find nearby matches. Full UX research, personas, wireframes, and hi-fi prototypes.',
       descZh: '一款配合智能足球鞋的App，帮助业余球员获取比赛数据反馈、加强团队凝聚力，并轻松发现附近球友。包含完整用研、用户画像、线框图与高保真原型。',
-      cover: '/images/footnow/5.jpg',
+      cover: '/images/footnow/Cover1.png',
       imagesEn: ['/images/footnow/1.jpg','/images/footnow/2.jpg','/images/footnow/3.jpg','/images/footnow/4.jpg','/images/footnow/5.jpg','/images/footnow/6.jpg'],
       imagesZh: ['/images/footnow/C1.jpg','/images/footnow/C2.jpg','/images/footnow/C3.jpg','/images/footnow/C4.jpg','/images/footnow/C5.jpg','/images/footnow/C6.jpg'],
       color: '#c8a45a',
       bg: '#0e0b04',
       tools: ['Figma', 'Adobe Photoshop', 'UX Research', 'Prototyping', 'Product Design'],
-    },
-    {
-      id: 'loreal',
-      titleEn: "L'Oréal Digital Methodology Encyclopedia",
-      titleZh: '欧莱雅产品试验方法百科全书',
-      tagEn: 'Product Design · Front-End Development · Project Management',
-      tagZh: '产品设计 · 前端开发 · 项目管理',
-      descEn: "A 0-to-1 internal platform housing 200+ product claims and testing methodologies for L'Oréal's R&I team, unifying information architecture, UI design, and front-end delivery into a single navigation system with a reusable component library. Independently led the full product lifecycle — from stakeholder alignment and UX requirements to prototype iteration and technical implementation with React and Figma, augmented by AI tooling.",
-      descZh: '为欧莱雅研发创新部门从0到1搭建的内部平台，收录200+项产品声明与测试方法论，将信息架构、UI设计与前端交付整合进统一的导航系统与可复用组件库。独立主导产品全生命周期——从跨部门需求对齐、UX需求梳理，到原型迭代与基于React、Figma及AI工具的技术落地实现。',
-      cover: '/images/Loreal/Loreal 5.jpg',
-      videos: ['/images/Loreal/video1.mp4', '/images/Loreal/video2.mp4', '/images/Loreal/video3.mp4', '/images/Loreal/video4.mp4'],
-      imagesEn: ['/images/Loreal/Loreal 1.jpg','/images/Loreal/Loreal 2.jpg','/images/Loreal/Loreal 3.jpg','/images/Loreal/Loreal 4.jpg','/images/Loreal/Loreal 5.jpg','/images/Loreal/Loreal 6.jpg'],
-      imagesZh: ['/images/Loreal/Loreal1CH.jpg','/images/Loreal/Loreal2CH.jpg','/images/Loreal/Loreal3CH.jpg','/images/Loreal/Loreal4CH.jpg','/images/Loreal/Loreal5CH.jpg','/images/Loreal/Loreal6CH.jpg'],
-      color: '#9b7ed4',
-      bg: '#0b0810',
-      tools: ['React', 'Figma', 'AI Tooling', 'Information Architecture', 'Product Design', 'Project Management'],
     },
     {
       id: 'codraft',
@@ -108,6 +110,7 @@ const t = {
       descEn: 'An AI-powered writing companion that decomposes the drafting process into guided stages — outlining, structuring, and refining — powered by the Claude API. Independently taken from concept to production: product framing, UX flow, and full-stack build, with custom interaction details like magnetic cursor repulsion and 3D card tilt.',
       descZh: '一款基于 Claude API 的 AI 写作辅助工具，将写作过程拆解为大纲构建、结构梳理、语言润色等引导式阶段。独立完成从产品构思、交互设计到全栈开发的完整流程，并加入磁性光标排斥、卡片3D倾斜等自定义交互细节，提升写作过程中的沉浸感与掌控感。',
       cover: '/images/Decomposer/CoDraft 3.jpg',
+      coverVideo: '/images/Decomposer/CoDraft Video.mp4',
       video: '/images/Decomposer/CoDraft Video.mp4',
       imagesEn: ['/images/Decomposer/CoDraft 1.jpg','/images/Decomposer/CoDraft 2.jpg','/images/Decomposer/CoDraft 3.jpg','/images/Decomposer/CoDraft 4.jpg'],
       imagesZh: ['/images/Decomposer/CoDraft 1 CH.jpg','/images/Decomposer/CoDraft 2 CH.jpg','/images/Decomposer/CoDraft 3 CH.jpg','/images/Decomposer/CoDraft 4 CH.jpg'],
@@ -125,6 +128,7 @@ const t = {
       descEn: 'An interactive dashboard visualizing AI-generated art style trends from 2022–2024, built on a curated dataset of AI artwork. Designed a full-screen, immersive interface housing seven distinct chart types — from trend lines to an interactive bubble world map — turning raw dataset into a legible visual narrative for researchers and enthusiasts.',
       descZh: '基于2022–2024年AI生成艺术数据集打造的交互式可视化看板。设计沉浸式全屏界面，整合趋势折线图、热力图、气泡世界地图等七种图表类型，将原始数据转化为易于理解的视觉叙事，服务于研究者与爱好者的探索需求。',
       cover: '/images/AIGC Atlas/AIGC Atlas 3.jpg',
+      coverVideo: '/images/AIGC Atlas/AIGCAtlasVideo.mp4',
       video: '/images/AIGC Atlas/AIGCAtlasVideo.mp4',
       imagesEn: ['/images/AIGC Atlas/AIGC Atlas 1.jpg','/images/AIGC Atlas/AIGC Atlas 2.jpg','/images/AIGC Atlas/AIGC Atlas 3.jpg','/images/AIGC Atlas/AIGC Atlas 4.jpg'],
       imagesZh: ['/images/AIGC Atlas/AIGC Atlas 1 CH.jpg','/images/AIGC Atlas/AIGC Atlas 2 CH.jpg','/images/AIGC Atlas/AIGC Atlas 3 CH.jpg','/images/AIGC Atlas/AIGC Atlas 4 CH.jpg'],
@@ -141,7 +145,7 @@ const t = {
       tagZh: '产品设计 · APP设计 · 用户体验',
       descEn: 'An AI-powered smart suitcase and companion app using cameras and weight sensors to track belongings in real time, notifying users of missing items before departure.',
       descZh: '搭载AI摄像头与电子秤的智能行李箱及配套App，实时追踪物品进出与重量变化，在出发前提醒用户防止遗漏。',
-      cover: '/images/trackpack/11.jpg',
+      cover: '/images/trackpack/Cover2.png',
       imagesEn: ['/images/trackpack/7.jpg','/images/trackpack/8.jpg','/images/trackpack/9.jpg','/images/trackpack/10.jpg','/images/trackpack/11.jpg','/images/trackpack/12.jpg'],
       imagesZh: ['/images/trackpack/C7.jpg','/images/trackpack/C8.jpg','/images/trackpack/C9.jpg','/images/trackpack/C10.jpg','/images/trackpack/C11.jpg','/images/trackpack/C12.jpg'],
       color: '#e87d9b',
@@ -156,7 +160,7 @@ const t = {
       tagZh: 'VR设计 · 用户体验',
       descEn: 'A VR app encouraging moderate drinking while delivering an authentic bar atmosphere and social interactions — with user journey maps, personas, wireframes, and hi-fi VR UI.',
       descZh: '一款鼓励适度饮酒的虚拟现实App，提供真实感十足的酒吧体验与社交互动，含用户行为路径图、用户画像与高保真VR界面。',
-      cover: '/images/happyhour/16.jpg',
+      cover: '/images/happyhour/Cover3.png',
       imagesEn: ['/images/happyhour/13.jpg','/images/happyhour/14.jpg','/images/happyhour/15.jpg','/images/happyhour/16.jpg','/images/happyhour/17.jpg'],
       imagesZh: ['/images/happyhour/C13.jpg','/images/happyhour/C14.jpg','/images/happyhour/C15.jpg','/images/happyhour/C16.jpg','/images/happyhour/C17.jpg'],
       color: '#e26f50',
@@ -171,7 +175,7 @@ const t = {
       tagZh: '互动艺术 · Arduino · P5.JS',
       descEn: 'Two interactive artworks exploring cultural discontinuity — a physical Arduino light installation and a P5.js generative particle visualization.',
       descZh: '两件探讨文化断裂性与延续性的互动艺术作品——Arduino实体灯光装置与P5.js粒子可视化生成艺术。',
-      cover: '/images/lanterns/22.jpg',
+      cover: '/images/lanterns/Cover4.png',
       imagesEn: ['/images/lanterns/18.jpg','/images/lanterns/19.jpg','/images/lanterns/20.jpg','/images/lanterns/21.jpg','/images/lanterns/22.jpg','/images/lanterns/23.jpg'],
       imagesZh: ['/images/lanterns/C18-1.jpg','/images/lanterns/C19-1.jpg','/images/lanterns/C20-1.jpg','/images/lanterns/C21-1.jpg','/images/lanterns/C22-1.jpg','/images/lanterns/C23-1.jpg'],
       color: '#8fc44a',
@@ -259,18 +263,18 @@ const experiences = [
       companyZh: '欧莱雅中国研发和创新中心',
       roleEn: 'Digital Project Designer/Manager Intern',
       roleZh: '数字化产品设计与开发实习生',
-      period: '2026.06 – Present',
+      period: '2026.06 – 2026.09',
       locationEn: 'Shanghai',
       locationZh: '上海',
       bulletsEn: [
-        'Owned the 0-to-1 development of the L\'Oréal Digital Methodology Encyclopedia, addressing fragmented and inconsistent content across teams by conducting user research, aligning requirements with key stakeholders, and restructuring information architecture into a four-level taxonomy and scalable platform supporting 100+ product methodologies.',
-        'Led cross-functional collaboration across design, product, and science stakeholders, driving requirement reviews, prioritization, and UX/technical tradeoffs to deliver 3 iterative product releases informed by user research and stakeholder feedback.',
-        'Established an AI-assisted product delivery workflow across design and front-end development, integrating Figma, React, and AI-assisted tools with human review and validation to improve delivery efficiency, quality, and platform scalability.',
+        "Designed and shipped the **L'Oréal Digital Methodology Encyclopedia**, a 0-to-1 internal platform that helps R&I scientists across Hair, Skin, and Make-Up find product claims and testing methodologies in one place, consolidating **100+ methodologies** that were previously fragmented across teams.",
+        "Conducted user research with each team to map how they organized their methods, then restructured the content into a **four-level taxonomy**, giving every methodology a predictable path from the homepage to its detail page.",
+        "Produced **three competing Figma prototypes** and led a stakeholder vote to align teams on one direction, then delivered it through **3 iterative releases**, building the React front end with an AI-assisted workflow and a reusable template that keeps all methodology pages consistent.",
       ],
       bulletsZh: [
-        '在欧莱雅全球数字化转型的背景下，主导欧莱雅产品方法数字化平台项目从0到1的产品与UX/UI设计工作和上线。针对各部门初始资源内容结构不统一的问题，重构信息架构规划并成功协调多方负责人，最终完成用户研究、交互流程设计、建立四级分类体系与全方位设计和前端可复用组件库，支持100+产品方法内容持续迭代。',
-        '贯通设计开发与AI协作：使用Figma构建高保真原型与设计规范，基于React完成网页开发；借助Figma AI探索设计方案，结合Claude辅助前端开发，经人工审阅编辑确保质量；使用MidJourney等AIGC工具高效产出视觉素材。',
-        '作为项目核心负责人，统筹产品、设计、科研等多方干系人沟通协作，主导需求评审、优先级排序与技术可行性权衡，推动完成3轮网页设计迭代并按期高质量发布，为欧莱雅全球数字化转型提供可复用的落地范例。',
+        "设计并上线**欧莱雅产品试验方法百科全书**——一款从0到1搭建的内部平台，帮助护发、护肤、彩妆三大品类的研发科学家在同一处查找产品声明与测试方法，整合了此前分散在各团队的**100+项方法论**。",
+        "与各团队开展用户研究，梳理其方法论的组织方式，并将内容重构为**四级分类体系**，让每一项方法论都有一条从首页到详情页的清晰路径。",
+        "产出**3套方向不同的Figma原型**并主导干系人投票，推动各团队就设计方向达成一致；随后通过**3轮迭代发布**完成交付，借助AI辅助工作流完成React前端开发，并搭建可复用模板，保证所有方法论页面的一致性。",
       ],
     },
     {
@@ -282,14 +286,12 @@ const experiences = [
       locationEn: 'Chengdu',
       locationZh: '成都',
       bulletsEn: [
-        'Managed the delivery of 30+ product prototypes through the full development lifecycle — research, requirements, wireframing, usability testing, and engineering handoff — for culturally-focused digital products.',
-        'Standardized a reusable component system and unified information architecture, reducing design-to-development handoff time by 30% and accelerating product delivery.',
-        'Coordinated agile sprint cycles with 20+ cross-functional stakeholders, aligning design and engineering priorities with product requirements.',
+        "Designed **30+ hi-fi prototypes** for cultural digital interactive products, taking each from requirements and wireframes through usability testing to engineering handoff.",
+        "Built a **20+ component** Figma library and unified the information architecture across products, cutting design-to-development handoff time by **30%** while working with the PM and a **20+ person** engineering team in agile sprints.",
       ],
       bulletsZh: [
-        '面向数字文化互动产品，负责UI/UX设计，完成30+低保真/高保真原型及组件设计，推动核心页面设计落地。',
-        '使用Figma构建20+组件与信息架构，增强界面一致性并支持前端开发高效实现，提升设计开发协作效率30%。',
-        '在高审美和信息结构标准下参与需求评审与版本迭代，协同PM及20+开发成员优化用户体验与产品可用性。',
+        "为文化类数字互动产品设计**30+套高保真原型**，覆盖从需求梳理、线框图、可用性测试到工程交付的完整流程。",
+        "搭建包含**20+组件**的Figma组件库并统一各产品的信息架构，将设计到开发的交付时间缩短**30%**；在敏捷迭代中与产品经理及**20+人**的开发团队紧密协作。",
       ],
     },
     {
@@ -301,12 +303,12 @@ const experiences = [
       locationEn: 'Los Angeles',
       locationZh: '洛杉矶',
       bulletsEn: [
-        'Conducted user research for an AI-driven HCI system, synthesizing findings into product opportunities around emotional recognition and memory management.',
-        'Synthesized 100+ behavioral data points into 10+ actionable product recommendations, informing decisions on system responsiveness and interaction design.',
+        "Researched how AI-generated \"Memories\" albums in Apple Photos can resurface painful moments for users, analyzing **100+ cases and user behaviors** around emotion recognition and memory management.",
+        "Translated findings into **10+ product recommendations** and an interaction prototype that gives users control to edit and filter AI-curated memories, informing the system's responsiveness and interaction design.",
       ],
       bulletsZh: [
-        '针对苹果照片APP中AI生成回忆相册可能唤起用户负面情绪的问题，协同团队策划围绕情感识别与记忆管理的人机交互研究，独立完成用户需求分析、交互逻辑原型设计，构建用户对AI生成内容编辑与筛选的交互方案。',
-        '基于100+条案例与用户行为调研分析，提出10+产品方案和优化建议，推动AI交互系统体验改进。',
+        "研究苹果照片App中AI生成的“回忆”相册可能唤起用户痛苦记忆的问题，围绕情感识别与记忆管理分析**100+条案例与用户行为**。",
+        "将研究结论转化为**10+条产品建议**与一套交互原型，让用户能够编辑和筛选AI生成的回忆内容，为系统的响应机制与交互设计提供依据。",
       ],
     },
     {
@@ -318,14 +320,12 @@ const experiences = [
       locationEn: 'Nanjing',
       locationZh: '南京',
       bulletsEn: [
-        'Participated in the content planning and spatial visual presentation of 3 major exhibition projects, leading information architecture planning and visual design while engaging with 10+ industry experts.',
-        'Collaborated with curators, designers, and cross-functional teams to drive exhibition execution, coordinating resources to ensure proper artifact packaging, transportation, and display.',
-        'Organized exhibition archival systems and processed bilingual content (1,000+ archival materials, 20+ Chinese/English documents), improving communication efficiency and optimizing information hierarchy and logic.',
+        "Planned the information architecture and visual presentation for **3 major exhibitions**, shaping how visitors encounter artifacts and interpretive content, in consultation with **10+ domain experts**.",
+        "Organized **1,000+ archival materials** and **20+ bilingual documents** into a clear content hierarchy, coordinating with curators, designers, and logistics teams to bring each exhibition to opening.",
       ],
       bulletsZh: [
-        '参与3场大型展览项目的内容策划与空间视觉呈现，负责展览信息架构规划与视觉设计，会见业内专家10+。',
-        '协同策展人、设计师及多方团队驱动展览执行流程，跨部门沟通并协调资源，保障文物的包装、运输、和展出。',
-        '整理展览资料体系并处理中英文内容（1000+资料、20+文稿），提升展览信息传达效率，优化信息层级与表达逻辑。',
+        "为**3场大型展览**规划信息架构与视觉呈现，设计观众接触文物与阐释内容的方式，期间与**10+位领域专家**沟通协作。",
+        "将**1000+份档案资料**与**20+份中英双语文稿**整理为清晰的内容层级，并协调策展人、设计师与物流团队，推动每场展览顺利开展。",
       ],
     },
   ];
@@ -340,10 +340,10 @@ const experiences = [
       locationEn: 'San Diego',
       locationZh: '圣地亚哥',
       bulletsEn: [
-        'Managed and supported 300+ students in projects, teaching design skills and problem-solving grounded in user needs, resulting in 30+ completed projects through cross-disciplinary collaboration between engineering & design.',
+        "Mentored **300+ students** in user-centered problem framing and rapid prototyping across engineering and design, helping bring **30+ projects** from concept to completion.",
       ],
       bulletsZh: [
-        '管理并支持300+名学生的项目实践，教授以用户需求为核心的设计技能与问题解决方法，通过工程与设计的跨学科协作促成30+个项目落地完成。',
+        "指导**300+名学生**在工程与设计的交叉实践中进行以用户为中心的问题定义与快速原型设计，帮助**30+个项目**从概念走向落地。",
       ],
     },
   ];
@@ -429,7 +429,25 @@ const experiences = [
     return lang === 'zh' ? project.imagesZh : project.imagesEn;
   }
 
-  const email = 'shz059' + '@' + 'uchicago.edu';
+  const email = 'zhou.alfalfa14' + '@' + 'gmail.com';
+
+  // Split "**bold**" markers into segments for highlighted key data
+  function rich(text) {
+    return text.split(/(\*\*[^*]+\*\*)/).filter(Boolean).map(t =>
+      t.startsWith('**') ? { b: true, t: t.slice(2, -2) } : { b: false, t }
+    );
+  }
+
+  // Cover videos: muted autoplay loop, only while on screen
+  function autoplayInView(node) {
+    node.muted = true;
+    const io = new IntersectionObserver(([entry]) => {
+      if (entry.isIntersecting) node.play().catch(() => {});
+      else node.pause();
+    }, { threshold: 0.25 });
+    io.observe(node);
+    return { destroy() { io.disconnect(); } };
+  }
 </script>
 
 <div class="cursor"></div>
@@ -490,109 +508,52 @@ const experiences = [
   </div>
 </section>
 
-<!-- ABOUT -->
-<section id="about" style="background:#111;padding:8rem 2rem">
-  <div class="max-w-7xl mx-auto grid md:grid-cols-2 gap-20 items-center">
-    <div class="relative" style="padding-bottom:2.5rem;padding-right:2.5rem">
-      <img src="/images/photos/photo2.jpeg" alt="Machu Picchu" class="fade-up w-full object-cover" style="aspect-ratio:1/1" />
-      <img src="/images/photos/photo3.jpeg" alt="Envision Lab" class="fade-up absolute object-cover" style="width:10rem;height:10rem;bottom:0;right:0;border:4px solid #111" />
-    </div>
-    <div>
-      <p class="fade-up mono-sm mb-4" style="color:rgba(255,255,255,0.28)">01 / {t[lang].aboutTitle}</p>
-      <h2 class="fade-up display-font text-5xl md:text-6xl mb-8" style="color:white">{t[lang].aboutTitle}</h2>
-      <p class="fade-up text-lg leading-relaxed mb-6" style="color:rgba(255,255,255,0.58)">{t[lang].aboutText}</p>
-      <p class="fade-up text-lg leading-relaxed mb-12" style="color:rgba(255,255,255,0.58)">{t[lang].aboutText2}</p>
-      <p class="fade-up mono-sm mb-6" style="color:rgba(255,255,255,0.28)">{t[lang].skillsTitle}</p>
-      <div class="flex flex-wrap gap-2">
-        {#each skills as skill}
-          <span
-            class="skill-tag mono-sm px-3 py-1.5 border cursor-default"
-            style="color:rgba(255,255,255,0.5);border-color:rgba(255,255,255,0.1);transition:color 0.5s ease, border-color 0.5s ease"
-            onmouseenter={(e) => {
-              const c = randomSkillColor();
-              e.currentTarget.style.color = c;
-              e.currentTarget.style.borderColor = c;
-            }}
-            onmouseleave={(e) => {
-              e.currentTarget.style.color = 'rgba(255,255,255,0.5)';
-              e.currentTarget.style.borderColor = 'rgba(255,255,255,0.1)';
-            }}
-          >{skill}</span>
-        {/each}
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- PROJECTS — large hover rows -->
+<!-- PROJECTS — image cards -->
 <section id="projects" style="background:#0a0a0a;padding:8rem 2rem 4rem">
   <div class="max-w-7xl mx-auto">
-    <p class="fade-up mono-sm mb-4" style="color:rgba(255,255,255,0.28)">02 / {t[lang].projectsTitle}</p>
+    <p class="fade-up mono-sm mb-4" style="color:rgba(255,255,255,0.28)">01 / {t[lang].projectsTitle}</p>
     <h2 class="fade-up display-font text-5xl md:text-6xl mb-16" style="color:white">{t[lang].projectsTitle}</h2>
 
-    <div style="border-top:1px solid rgba(255,255,255,0.07)">
+    <div class="proj-list">
       {#each projects as project, i}
         <div
-          class="proj-row"
-          onmouseenter={() => hoveredProject = project.id}
-          onmouseleave={() => hoveredProject = null}
+          class="proj-card fade-up"
+          style="--accent:{project.color}"
           onclick={() => openProject(project)}
           role="button"
           tabindex="0"
           onkeydown={(e) => e.key==='Enter' && openProject(project)}
-          style="
-            border-bottom:1px solid rgba(255,255,255,0.07);
-            cursor:pointer;
-            overflow:hidden;
-            transition: background 0.5s ease, padding 0.5s ease;
-            background:{hoveredProject===project.id ? project.color+'14' : 'transparent'};
-            padding:{hoveredProject===project.id ? '2.5rem 1rem' : '1.8rem 1rem'};
-          "
         >
-          <div style="display:flex;align-items:center;gap:2rem;flex-wrap:wrap">
-            <span class="mono-sm" style="color:rgba(255,255,255,0.22);min-width:2rem">0{i+1}</span>
-            <h3 class="display-font" style="
-              font-size:clamp(2.2rem,4.5vw,4rem);
-              color:{hoveredProject===project.id ? project.color : 'white'};
-              transition:color 0.35s ease;
-              line-height:1;
-              flex-shrink:0;
-            ">{lang==='en' ? project.titleEn : project.titleZh}</h3>
-            <span class="mono-sm" style="color:rgba(255,255,255,0.32);flex:1">{lang==='en' ? project.tagEn : project.tagZh}</span>
-            <span style="
-              font-size:1.4rem;
-              color:{hoveredProject===project.id ? project.color : 'rgba(255,255,255,0.18)'};
-              transition:color 0.3s,transform 0.3s;
-              transform:{hoveredProject===project.id ? 'translate(3px,-3px)' : 'none'};
-              display:inline-block;
-            ">↗</span>
+          <div class="proj-media">
+            {#if project.coverVideo}
+              <video
+                src={project.coverVideo}
+                class="proj-img proj-video"
+                muted
+                loop
+                playsinline
+                preload="metadata"
+                aria-label={lang==='en' ? project.titleEn : project.titleZh}
+                use:autoplayInView
+              ></video>
+            {:else}
+              <img src={project.cover} alt={lang==='en' ? project.titleEn : project.titleZh} class="proj-img" loading="lazy" />
+            {/if}
           </div>
 
-          <div style="
-            display:grid;
-            grid-template-columns:1fr 1fr;
-            gap:2rem;
-            margin-top:{hoveredProject===project.id ? '2rem' : '0'};
-            max-height:{hoveredProject===project.id ? '36rem' : '0'};
-            opacity:{hoveredProject===project.id ? 1 : 0};
-            overflow:hidden;
-            transition:max-height 0.55s cubic-bezier(0.4,0,0.2,1), opacity 0.4s ease, margin-top 0.4s ease;
-          ">
-            <div style="overflow:hidden;border-radius:2px">
-              <img src={project.cover} alt={project.titleEn}
-                style="width:100%;height:100%;object-fit:cover;max-height:32rem;transition:transform 0.6s ease;transform:{hoveredProject===project.id?'scale(1.03)':'scale(1)'}" />
+          <div class="proj-info">
+            <div class="proj-meta">
+              <span class="mono-sm" style="color:rgba(255,255,255,0.25)">0{i+1}</span>
+              <span class="mono-sm proj-tag">{lang==='en' ? project.tagEn : project.tagZh}</span>
             </div>
-            <div style="display:flex;flex-direction:column;justify-content:center;gap:1.5rem;padding:1rem 0">
-              <p style="font-size:0.95rem;line-height:1.75;color:rgba(255,255,255,0.58)">{lang==='en' ? project.descEn : project.descZh}</p>
-              <div style="display:flex;flex-wrap:wrap;gap:0.5rem">
-                {#each project.tools as tool}
-                  <span class="mono-sm px-3 py-1" style="border:1px solid {project.color}55;color:{project.color}">{tool}</span>
-                {/each}
-              </div>
-              <p class="mono-sm" style="color:{project.color};letter-spacing:0.15em">
-                {lang==='en' ? '↗ CLICK TO VIEW FULL PROJECT' : '↗ 点击查看完整项目'}
-              </p>
+            <h3 class="display-font proj-title">{lang==='en' ? project.titleEn : project.titleZh}</h3>
+            <p class="proj-desc">{lang==='en' ? project.descEn : project.descZh}</p>
+            <div class="proj-tools">
+              {#each project.tools as tool}
+                <span class="mono-sm proj-tool">{tool}</span>
+              {/each}
             </div>
+            <p class="mono-sm proj-cta">{t[lang].viewProject} <span class="proj-arrow">→</span></p>
           </div>
         </div>
       {/each}
@@ -712,6 +673,40 @@ const experiences = [
   </div>
 </section>
 
+<!-- ABOUT -->
+<section id="about" style="background:#111;padding:8rem 2rem">
+  <div class="max-w-7xl mx-auto grid md:grid-cols-2 gap-20 items-center">
+    <div class="relative" style="padding-bottom:2.5rem;padding-right:2.5rem">
+      <img src="/images/photos/photo2.jpeg" alt="Machu Picchu" class="fade-up w-full object-cover" style="aspect-ratio:1/1" />
+      <img src="/images/photos/photo3.jpeg" alt="Envision Lab" class="fade-up absolute object-cover" style="width:10rem;height:10rem;bottom:0;right:0;border:4px solid #111" />
+    </div>
+    <div>
+      <p class="fade-up mono-sm mb-4" style="color:rgba(255,255,255,0.28)">02 / {t[lang].aboutTitle}</p>
+      <h2 class="fade-up display-font text-5xl md:text-6xl mb-8" style="color:white">{t[lang].aboutTitle}</h2>
+      <p class="fade-up text-lg leading-relaxed mb-6" style="color:rgba(255,255,255,0.58)">{t[lang].aboutText}</p>
+      <p class="fade-up text-lg leading-relaxed mb-12" style="color:rgba(255,255,255,0.58)">{t[lang].aboutText2}</p>
+      <p class="fade-up mono-sm mb-6" style="color:rgba(255,255,255,0.28)">{t[lang].skillsTitle}</p>
+      <div class="flex flex-wrap gap-2">
+        {#each skills as skill}
+          <span
+            class="skill-tag mono-sm px-3 py-1.5 border cursor-default"
+            style="color:rgba(255,255,255,0.5);border-color:rgba(255,255,255,0.1);transition:color 0.5s ease, border-color 0.5s ease"
+            onmouseenter={(e) => {
+              const c = randomSkillColor();
+              e.currentTarget.style.color = c;
+              e.currentTarget.style.borderColor = c;
+            }}
+            onmouseleave={(e) => {
+              e.currentTarget.style.color = 'rgba(255,255,255,0.5)';
+              e.currentTarget.style.borderColor = 'rgba(255,255,255,0.1)';
+            }}
+          >{skill}</span>
+        {/each}
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- EXPERIENCE -->
 <section id="experience" style="background:#111;padding:8rem 2rem">
   <div class="max-w-7xl mx-auto">
@@ -730,7 +725,7 @@ const experiences = [
             <ul style="display:flex;flex-direction:column;gap:0.75rem">
               {#each (lang==='en'?exp.bulletsEn:exp.bulletsZh) as bullet}
                 <li style="display:flex;gap:0.75rem;font-size:0.875rem;line-height:1.65;color:rgba(255,255,255,0.52)">
-                  <span style="color:rgba(255,255,255,0.18);flex-shrink:0;margin-top:0.1rem">—</span>{bullet}
+                  <span style="color:rgba(255,255,255,0.18);flex-shrink:0;margin-top:0.1rem">—</span><span>{#each rich(bullet) as seg}{#if seg.b}<strong class="hl">{seg.t}</strong>{:else}{seg.t}{/if}{/each}</span>
                 </li>
               {/each}
             </ul>
@@ -759,7 +754,7 @@ const experiences = [
             <ul style="display:flex;flex-direction:column;gap:0.75rem">
               {#each (lang==='en'?exp.bulletsEn:exp.bulletsZh) as bullet}
                 <li style="display:flex;gap:0.75rem;font-size:0.875rem;line-height:1.65;color:rgba(255,255,255,0.52)">
-                  <span style="color:rgba(255,255,255,0.18);flex-shrink:0;margin-top:0.1rem">—</span>{bullet}
+                  <span style="color:rgba(255,255,255,0.18);flex-shrink:0;margin-top:0.1rem">—</span><span>{#each rich(bullet) as seg}{#if seg.b}<strong class="hl">{seg.t}</strong>{:else}{seg.t}{/if}{/each}</span>
                 </li>
               {/each}
             </ul>
@@ -1003,8 +998,61 @@ const experiences = [
   .scroll-line { width:1px; height:4rem; background:linear-gradient(to bottom, transparent, rgba(255,255,255,0.28)); animation:pulse 2s ease-in-out infinite; }
   @keyframes pulse { 0%,100%{opacity:0.4} 50%{opacity:1} }
 
-  .proj-row:focus { outline:none; }
-  .proj-row:focus-visible { outline:2px solid rgba(255,255,255,0.25); }
+  .hl { color:rgba(255,255,255,0.92); font-weight:600; }
+
+  /* Project cards */
+  .proj-list { display:flex; flex-direction:column; gap:1.5rem; }
+  .proj-card {
+    display:grid;
+    grid-template-columns: 1.4fr 1fr;
+    gap:3rem;
+    align-items:center;
+    padding:2rem;
+    background:#111;
+    border:1px solid rgba(255,255,255,0.07);
+    border-radius:4px;
+    cursor:pointer;
+    outline:none;
+    transition:border-color 0.4s ease, background 0.4s ease;
+  }
+  .proj-card:hover { border-color:color-mix(in srgb, var(--accent) 45%, transparent); background:#141414; }
+  .proj-card:focus-visible { border-color:var(--accent); }
+
+  .proj-media { overflow:hidden; border-radius:2px; background:#0a0a0a; }
+  .proj-img { width:100%; height:auto; display:block; transition:transform 0.6s ease; }
+  .proj-card:hover .proj-img { transform:scale(1.025); }
+  .proj-video { aspect-ratio:16 / 9; object-fit:cover; }
+
+  .proj-info { display:flex; flex-direction:column; gap:1rem; min-width:0; }
+  .proj-meta { display:flex; gap:1rem; align-items:baseline; }
+  .proj-tag { color:var(--accent); line-height:1.6; }
+  .proj-title {
+    font-size:clamp(1.9rem, 3vw, 2.8rem);
+    line-height:1;
+    color:white;
+    white-space:pre-line;
+    transition:color 0.35s ease;
+  }
+  .proj-card:hover .proj-title { color:var(--accent); }
+  .proj-desc {
+    font-size:0.92rem;
+    line-height:1.7;
+    color:rgba(255,255,255,0.55);
+    display:-webkit-box;
+    -webkit-line-clamp:4;
+    -webkit-box-orient:vertical;
+    overflow:hidden;
+  }
+  .proj-tools { display:flex; flex-wrap:wrap; gap:0.4rem; }
+  .proj-tool { font-size:0.62rem; padding:0.25rem 0.6rem; border:1px solid rgba(255,255,255,0.12); color:rgba(255,255,255,0.45); }
+  .proj-cta { color:rgba(255,255,255,0.4); letter-spacing:0.18em; text-transform:uppercase; margin-top:0.25rem; transition:color 0.3s; }
+  .proj-card:hover .proj-cta { color:var(--accent); }
+  .proj-arrow { display:inline-block; transition:transform 0.3s; }
+  .proj-card:hover .proj-arrow { transform:translateX(6px); }
+
+  @media (max-width: 860px) {
+    .proj-card { grid-template-columns:1fr; gap:1.5rem; padding:1.25rem; }
+  }
 
   .academic-grid {
     border: 1px solid rgba(255,255,255,0.06);
